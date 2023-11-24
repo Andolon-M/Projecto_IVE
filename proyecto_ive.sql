@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2023 a las 00:07:19
+-- Tiempo de generación: 24-11-2023 a las 23:47:32
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -47,16 +47,11 @@ CREATE TABLE `data_users` (
 --
 
 INSERT INTO `data_users` (`id`, `dni_user`, `tipo_dni`, `birthdate`, `gender`, `cell`, `direccion`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, '32865262', 'CC', '1971-01-03', 'Femenino', '310248', 'cra 12', 3, '2023-10-15 10:34:11', '2023-10-05 23:18:49'),
-(3, '11929', 'CC', '2000-07-09', 'Masculino', '301255', 'Cra 12 #14-', 1, '2023-10-15 10:34:48', '2023-10-05 23:17:35'),
-(7, '85438710', 'TI', '2023-09-06', 'Masculino', '12345', 'Cra 18n #18b-19 int ', 8, '2023-10-15 10:34:32', '2023-09-23 03:55:47'),
 (9, '1124475747', 'CC', '2023-09-12', 'Masculino', '+57214787474', 'Av 14 No13', 11, '2023-09-29 22:40:50', NULL),
-(19, '1192904', 'CC', '2005-11-01', 'Masculino', '0', 'no tiene', 175, '2023-10-05 18:42:20', '2023-10-05 23:42:20'),
 (20, '11124787411', 'TI', '2023-10-19', 'Masculino', '12345', 'no tiene', 171, '2023-10-03 01:03:32', '2023-10-03 06:03:32'),
 (22, '144777477', 'TI', '2006-10-05', 'Femenino', '1234567', 'Cra 12 ', 180, '2023-10-15 10:34:58', '2023-10-05 23:14:32'),
-(23, '123136465765', 'TI', '1960-06-18', 'Femenino', '12345', 'bogota', 195, '2023-10-09 08:23:48', '2023-10-09 08:23:48'),
-(24, '526519519', 'TI', '1983-06-25', 'Femenino', '592985195', 'no tiene', 183, '2023-10-14 21:16:09', '2023-10-14 21:16:09'),
-(27, '12313586', 'CC', '2000-10-14', 'Masculino', '30125555', 'no tiene', 201, '2023-10-14 22:43:34', '2023-10-14 22:43:34');
+(27, '12313586', 'CC', '2000-10-14', 'Masculino', '30125555', 'no tiene', 201, '2023-10-14 22:43:34', '2023-10-14 22:43:34'),
+(30, '00000000', 'TI', '2023-11-24', 'Masculino', 'N/A', 'N/A', 207, '2023-11-25 03:39:54', '2023-11-25 03:39:54');
 
 -- --------------------------------------------------------
 
@@ -195,9 +190,9 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (2, 'App\\Models\\User', 8),
-(4, 'App\\Models\\User', 1),
+(2, 'App\\Models\\User', 206),
+(4, 'App\\Models\\User', 207),
 (5, 'App\\Models\\User', 183),
-(6, 'App\\Models\\User', 1),
 (6, 'App\\Models\\User', 183),
 (6, 'App\\Models\\User', 195),
 (6, 'App\\Models\\User', 201),
@@ -381,35 +376,30 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (11, 2),
 (11, 4),
 (11, 5),
+(12, 2),
 (12, 4),
+(13, 2),
 (13, 4),
+(14, 2),
 (14, 4),
 (15, 4),
 (16, 4),
 (17, 4),
 (18, 4),
-(19, 2),
 (19, 4),
 (19, 5),
 (19, 6),
 (19, 8),
-(20, 2),
 (20, 4),
 (20, 8),
-(21, 2),
 (21, 4),
 (21, 8),
-(22, 2),
 (22, 4),
 (22, 8),
-(23, 2),
 (23, 4),
 (23, 6),
-(24, 2),
 (24, 4),
-(25, 2),
 (25, 4),
-(26, 2),
 (26, 4),
 (27, 4),
 (28, 4),
@@ -436,20 +426,6 @@ CREATE TABLE `team_members` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Volcado de datos para la tabla `team_members`
---
-
-INSERT INTO `team_members` (`id`, `work_teams_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, NULL, NULL),
-(3, 1, 9, NULL, NULL),
-(4, 1, 8, NULL, NULL),
-(86, 24, 1, '2023-10-05 08:04:36', '2023-10-05 08:04:36'),
-(87, 24, 3, '2023-10-05 08:04:39', '2023-10-05 08:04:39'),
-(88, 24, 8, '2023-10-05 08:04:42', '2023-10-05 08:04:42'),
-(89, 24, 9, '2023-10-05 08:04:44', '2023-10-05 08:04:44'),
-(90, 1, 180, '2023-10-09 07:34:31', '2023-10-09 07:34:31');
-
 -- --------------------------------------------------------
 
 --
@@ -475,11 +451,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `email_verified_at`, `password`, `google_id`, `image`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Anderson Estiven', 'Mendez Lascarro', 'andolon.m@gmail.com', NULL, NULL, '106627993871217273692', 'https://lh3.googleusercontent.com/a/ACg8ocLj7nEhaHUHaKOjZFjKoyQFFWF8wvX4dGXE9A_yimBx3do=s96-c', NULL, '2023-09-21 23:19:09', '2023-10-05 23:03:40'),
-(3, 'Edelmira', 'Lascarro Amaris', 'edelmir@gmail.com', NULL, NULL, '105154724454927699909', 'https://lh3.googleusercontent.com/a/ACg8ocI-dDwo9o1iKr5yAj4S9zUaWcbIvqSIRYeJFpgF4_qB=s96-c', NULL, '2023-09-21 23:51:36', '2023-09-23 03:53:40'),
-(8, 'Martin', 'Mendez Martinez', 'mendezmartinez@gmail.com', NULL, '$2y$10$NwFCTXIm/Oot87EqAXRZ7eheQkZAiVGT6baZW0ZeHRL0yduDzsDrW', '109058593811340116857', 'https://lh3.googleusercontent.com/a/ACg8ocJTKchvMcY13yYnhf3kEHEIS43Dj2NoqslPKHIrh_Pfr6U=s96-c', NULL, '2023-09-23 03:55:47', '2023-10-09 07:33:28'),
 (9, 'Pepito', 'Suares', 'pedro@pedro.com', NULL, '$2y$10$mg4FcIej9Kque8zwogEd/e3cY/R0tb751JPMFMkdx2w6ZTFQVOKeG', NULL, NULL, NULL, '2023-09-23 03:57:11', '2023-09-23 03:57:11'),
-(10, NULL, 'null', 'kmendez4@udi.edu.co', NULL, NULL, NULL, NULL, NULL, '2023-09-25 08:28:14', '2023-09-25 08:28:14'),
 (11, 'Jhoan', 'Sanches Gallardo', 'Johan@sanchesgallardo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (155, NULL, NULL, 'dsfsdfsd2@dfsdfdsf', NULL, NULL, NULL, NULL, NULL, '2023-09-28 01:39:07', '2023-09-28 01:39:07'),
 (156, NULL, NULL, 'jajaajjaja@jajajjajaja', NULL, NULL, NULL, NULL, NULL, '2023-09-28 01:51:39', '2023-09-28 01:51:39'),
@@ -494,18 +466,13 @@ INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `email_verified_at`, `p
 (165, NULL, NULL, 'qwertyui@aonas', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:24:10', '2023-09-28 03:24:10'),
 (166, NULL, NULL, 'sera@que.ya', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:26:14', '2023-09-28 03:26:14'),
 (167, NULL, NULL, 'nada@de.nada', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:26:41', '2023-09-28 03:26:41'),
-(168, NULL, NULL, 'terrible@nada.funciona', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:30:37', '2023-09-28 03:30:37'),
 (169, NULL, NULL, 'hupppa@noo', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:31:17', '2023-09-28 03:31:17'),
 (170, NULL, NULL, 'jejejejej@jojojo.com', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:51:51', '2023-09-28 03:51:51'),
 (171, 'jojojorje', 'jjijijimenes', 'feliz@navidad', NULL, NULL, NULL, NULL, NULL, '2023-09-29 04:11:59', '2023-10-03 06:03:32'),
-(172, 'probando si funciona', 'bei', 'nofuniona@bein', NULL, NULL, NULL, NULL, NULL, '2023-09-29 04:12:56', '2023-09-30 03:02:41'),
-(175, 'Iglesia Vida Y Esperanza', 'Asambleas de Dios', 'ivead@gmail.com', NULL, NULL, '110865638326727391428', 'https://lh3.googleusercontent.com/a/ACg8ocK3WDpc-mqPnES6OI5qpSidd1OaBMrGqSxkqdBrsZn8pjU=s96-c', NULL, '2023-09-29 04:24:24', '2023-09-30 05:21:03'),
 (180, 'Dayana', 'Ortega', 'Dayana@gayana.com', NULL, NULL, NULL, NULL, NULL, '2023-10-03 00:47:30', '2023-10-03 07:24:27'),
-(181, 'Gladys', '', 'gladys@gladys', NULL, '$2y$10$ts5ajA0RVwv7lvd5l4KHC.aJ5FxWCeEQqPXRxjtZwhNs8iSBnPTPm', NULL, NULL, NULL, '2023-10-03 10:29:45', '2023-10-03 10:29:45'),
-(183, 'Viviana', 'Gonzalez', 'Viviana@viviana.com', NULL, '$2y$10$BFkxQqbzptOwE5uTyPPVVOrSfsktNNjGlmeW213K2i7S3luUrWm02', NULL, NULL, NULL, '2023-10-04 01:37:34', '2023-10-14 21:16:09'),
-(195, 'Myriam isabel', 'diaz martinez', 'libertad@gmail.com', NULL, NULL, '108116851524129060832', 'https://lh3.googleusercontent.com/a/ACg8ocLsEd0OvV_5T__kAN-X-Lk3gpmzztGdut19pRXuqHopWZnG=s96-c', NULL, '2023-10-09 08:22:04', '2023-10-09 08:23:48'),
 (201, 'Pepito Enriques', 'Gonzalez', 'pedro@gonzales.com', NULL, NULL, NULL, NULL, NULL, '2023-10-14 22:43:34', '2023-10-14 22:44:24'),
-(202, 'Anderson', 'Mendez', 'andoloo@gmail.com', NULL, '$2y$10$zViyVCldnlOK4fTTpbpk8.ftnZYa7TodWjeuBs2I.Wu2iq0vBT4za', '115151366592372796607', 'https://lh3.googleusercontent.com/a/ACg8ocJqRobYX4HJhWFn1wf6OomNfubuNtvYWczYt1zspUf_xqcx=s96-c', NULL, '2023-10-14 22:57:03', '2023-10-14 22:57:23');
+(205, 'jhon jairo', 'Hernandez', 'Jon@Hernandez', NULL, '$2y$10$qqhsG.7Q64pIl8x8yGwAde9ExAiOw5umy4eWe0yXROwH.kkuaIk8S', NULL, NULL, NULL, '2023-11-24 21:00:53', '2023-11-24 21:00:53'),
+(207, 'admin', 'admin', 'admin@admin', NULL, '$2y$10$ziVb/bOmlveb7DqNWnTpIO2iKYXHuTEK7Aaejmu9Yv..5k6vsyM7O', NULL, NULL, NULL, '2023-11-25 03:39:10', '2023-11-25 03:43:13');
 
 -- --------------------------------------------------------
 
@@ -545,14 +512,6 @@ CREATE TABLE `work_teams` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `work_teams`
---
-
-INSERT INTO `work_teams` (`id`, `name`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Alabanza', 3, NULL, NULL),
-(24, 'Evangelismo', 183, '2023-10-04 01:07:49', '2023-10-04 01:37:47');
 
 --
 -- Índices para tablas volcadas
@@ -691,7 +650,7 @@ ALTER TABLE `work_teams`
 -- AUTO_INCREMENT de la tabla `data_users`
 --
 ALTER TABLE `data_users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `deposits`
@@ -757,7 +716,7 @@ ALTER TABLE `team_members`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 
 --
 -- AUTO_INCREMENT de la tabla `weekly_reports`
