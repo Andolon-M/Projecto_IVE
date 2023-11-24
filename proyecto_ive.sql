@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2023 a las 20:45:52
+-- Tiempo de generación: 23-11-2023 a las 00:07:19
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `proyecto_ive`
 --
+CREATE DATABASE IF NOT EXISTS `proyecto_ive` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
+USE `proyecto_ive`;
 
 -- --------------------------------------------------------
 
@@ -85,7 +87,8 @@ INSERT INTO `deposits` (`id`, `donor_name`, `donor_id`, `type_donor_id`, `date`,
 (8, 'xcvbnm,', '5163543', 'TI', '2023-10-18', 23321, 'Ofrenda', NULL, 16, '2023-10-12 04:16:35', '2023-10-12 04:16:42'),
 (9, 'pepito suerea', '52535746', 'TI', '2023-10-12', 2000000, 'Diezmo', NULL, 15, '2023-10-12 23:01:56', '2023-10-12 23:02:03'),
 (10, 'MYRIAM ISABEL DIAZ MARTINEZ', '1192903446', 'CC', '2023-10-14', 200000, 'Diezmo', NULL, 15, '2023-10-14 21:13:15', '2023-10-14 21:13:15'),
-(11, 'Pepito Correa', '123435657', 'CC', '2023-10-14', 50000, 'Ofrenda', NULL, 15, '2023-10-14 22:50:20', '2023-10-14 22:55:17');
+(11, 'Pepito Correa', '123435657', 'CC', '2023-10-14', 50000, 'Ofrenda', NULL, 15, '2023-10-14 22:50:20', '2023-10-14 22:55:17'),
+(12, 'Anderson Mendez', '132465', 'CC', '2023-11-22', 134, 'Diezmo', NULL, 19, '2023-11-22 07:19:06', '2023-11-22 07:19:06');
 
 -- --------------------------------------------------------
 
@@ -112,7 +115,8 @@ CREATE TABLE `egresses` (
 INSERT INTO `egresses` (`id`, `description`, `type`, `date`, `value`, `url`, `weekly_reports_id`, `created_at`, `updated_at`) VALUES
 (9, 'pago recibo agua', 'Caja', '2023-10-11', 2345400, NULL, 15, '2023-10-12 01:33:08', '2023-10-12 03:45:54'),
 (10, 'pago de internet ', 'Caja Menor', '2023-10-04', 20000, NULL, 17, '2023-10-12 04:23:28', '2023-10-12 04:24:02'),
-(11, 'emolumentos', 'Caja Mayor', '2023-10-14', 230000, NULL, 15, '2023-10-14 21:24:30', '2023-10-14 21:24:30');
+(11, 'emolumentos', 'Caja Mayor', '2023-10-14', 230000, NULL, 15, '2023-10-14 21:24:30', '2023-10-14 21:24:30'),
+(12, 'Pago arriendo', 'Caja Mayor', '2023-11-22', 700000, NULL, 19, '2023-11-22 07:30:03', '2023-11-22 07:30:03');
 
 -- --------------------------------------------------------
 
@@ -525,7 +529,8 @@ INSERT INTO `weekly_reports` (`id`, `date`, `monthly_reports_id`, `created_at`, 
 (15, '2023-10-15', 125410, '2023-10-10 04:22:05', '2023-10-10 04:22:05'),
 (16, '2023-10-22', 125410, '2023-10-12 04:16:42', '2023-10-12 04:16:42'),
 (17, '2023-10-08', 125410, '2023-10-12 04:24:02', '2023-10-12 04:24:02'),
-(18, '2024-01-14', 125412, '2023-10-14 22:52:39', '2023-10-14 22:52:39');
+(18, '2024-01-14', 125412, '2023-10-14 22:52:39', '2023-10-14 22:52:39'),
+(19, '2023-11-26', 4, '2023-11-22 07:19:06', '2023-11-22 07:19:06');
 
 -- --------------------------------------------------------
 
@@ -558,8 +563,8 @@ INSERT INTO `work_teams` (`id`, `name`, `user_id`, `created_at`, `updated_at`) V
 --
 ALTER TABLE `data_users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `data_users_dni_user_unique` (`dni_user`),
-  ADD UNIQUE KEY `data_users_user_id_unique` (`user_id`);
+  ADD UNIQUE KEY `data_users_user_id_unique` (`user_id`),
+  ADD UNIQUE KEY `data_users_dni_user_unique` (`dni_user`);
 
 --
 -- Indices de la tabla `deposits`
@@ -692,13 +697,13 @@ ALTER TABLE `data_users`
 -- AUTO_INCREMENT de la tabla `deposits`
 --
 ALTER TABLE `deposits`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `egresses`
 --
 ALTER TABLE `egresses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -758,7 +763,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `weekly_reports`
 --
 ALTER TABLE `weekly_reports`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `work_teams`

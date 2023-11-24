@@ -204,8 +204,8 @@
                             <a href="https://facebook.com/vidayesperanza.AD" target="_blank" class="items-center justify-center rounded-full shadow p-4 h-auto">
                                 <img src="{{ asset('images/facebook.svg') }}" alt="" class="h-10 ">
                             </a>
-                            <a class="items-center justify-center rounded-full shadow p-4 h-auto">
-                                <img src="{{ asset('images/whatsapp.svg') }}" alt="" class="h-10 ">
+                            <a href="https://wa.me/573173756918" target="_blank" class="items-center justify-center rounded-full shadow p-4 h-auto">
+                                <img src="{{ asset('images/WhatsAppButtonGreenLarge.svg') }}" alt="" class="h-10 ">
                             </a>
                         </div>
                     </div>
@@ -220,7 +220,7 @@
                         <div class="flex flex-wrap space-x-2 space-y-2 w-full items-center justify-center">
 
                             <a class="items-center justify-center rounded-full shadow p-4 h-auto">
-                                <img src="{{ asset('images/payu.svg') }}" alt="" class="h-10 ">
+                                <img src="{{ asset('images/Wompi_logo.png') }}" alt="" class="h-16 ">
                             </a>
                             <a class="items-center justify-center rounded-full shadow p-4 h-auto">
                                 <img src="{{ asset('images/nequi.svg') }}" alt="" class="h-10 ">

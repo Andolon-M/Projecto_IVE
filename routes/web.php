@@ -59,9 +59,52 @@ Route::get('/google-auth/callback', function () {
         // Actualiza los campos
         $user->update($updateData);
     } else {
+        // El usuario no existe, crea uno nuevo
+        $newUserData = [
+            'google_id' => $user_google->id,
+            'name' => $user_google->user['given_name'],
+            'email' => $user_google->user['email'],
+            'last_name' => $user_google->user['family_name'],
+        ];
+
+        // Verifica si 'picture' existe en el objeto $user_google antes de intentar asignarlo
+        if (isset($user_google->user['picture'])) {
+            $newUserData['image'] = $user_google->user['picture'];
+        }
+
+        // Crea un nuevo usuario
+        $user = User::create($newUserData);
+    }
+
+    /* Funcion Alterna para no permitir el ingreso de usuarios no autorizador por el administrador
+    if ($user) {
+        // El usuario existe
+        $updateData = [
+            'google_id' => $user_google->id,
+        ];
+
+        // Verifica si los campos name y last_name están vacíos antes de actualizarlos
+        if (empty($user->name)) {
+            $updateData['name'] = $user_google->user['given_name'];
+        }
+
+        if (empty($user->last_name)) {
+            $updateData['last_name'] = $user_google->user['family_name'];
+        }
+
+        // Verifica si 'picture' existe en el objeto $user_google antes de intentar asignarlo
+        if (isset($user_google->user['picture'])) {
+            $updateData['image'] = $user_google->user['picture'];
+        }
+
+        // Actualiza los campos
+        $user->update($updateData);
+    } else {
+        
         // El usuario no existe, realiza la redirección con un mensaje flash
         return redirect()->route('login')->with('error', '<strong>Hola! el usuario no está autorizado</strong><br> comuníquese a <a href="mailto:ivead.cpc@gmail.com">ivead.cpc@gmail.com</a> para solicitar su acceso');
     }
+*/
     Auth::login($user);
     return redirect('/descubrir')->with('success', 'Bienvenido');
 });
@@ -89,7 +132,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('/financiera', \App\Http\Controllers\GestionFinancieraController::class);
     Route::resource('/reporte-semanal', \App\Http\Controllers\ReporteSemanalController::class);
     Route::resource('/reporte-mensual', \App\Http\Controllers\ReporteMensualController::class);
-   
 });
 
 require __DIR__ . '/auth.php';
