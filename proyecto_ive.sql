@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2023 a las 23:47:32
+-- Tiempo de generación: 27-11-2023 a las 23:46:08
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -37,21 +37,10 @@ CREATE TABLE `data_users` (
   `gender` varchar(255) DEFAULT NULL,
   `cell` varchar(255) DEFAULT NULL,
   `direccion` varchar(255) DEFAULT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `data_users`
---
-
-INSERT INTO `data_users` (`id`, `dni_user`, `tipo_dni`, `birthdate`, `gender`, `cell`, `direccion`, `user_id`, `created_at`, `updated_at`) VALUES
-(9, '1124475747', 'CC', '2023-09-12', 'Masculino', '+57214787474', 'Av 14 No13', 11, '2023-09-29 22:40:50', NULL),
-(20, '11124787411', 'TI', '2023-10-19', 'Masculino', '12345', 'no tiene', 171, '2023-10-03 01:03:32', '2023-10-03 06:03:32'),
-(22, '144777477', 'TI', '2006-10-05', 'Femenino', '1234567', 'Cra 12 ', 180, '2023-10-15 10:34:58', '2023-10-05 23:14:32'),
-(27, '12313586', 'CC', '2000-10-14', 'Masculino', '30125555', 'no tiene', 201, '2023-10-14 22:43:34', '2023-10-14 22:43:34'),
-(30, '00000000', 'TI', '2023-11-24', 'Masculino', 'N/A', 'N/A', 207, '2023-11-25 03:39:54', '2023-11-25 03:39:54');
 
 -- --------------------------------------------------------
 
@@ -73,18 +62,6 @@ CREATE TABLE `deposits` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Volcado de datos para la tabla `deposits`
---
-
-INSERT INTO `deposits` (`id`, `donor_name`, `donor_id`, `type_donor_id`, `date`, `value`, `type`, `url`, `weekly_reports_id`, `created_at`, `updated_at`) VALUES
-(7, 'Anderson Mendez', '1192903446', 'TI', '2023-10-11', 1324650, 'Ofrenda', NULL, 15, '2023-10-12 01:32:40', '2023-10-12 03:47:50'),
-(8, 'xcvbnm,', '5163543', 'TI', '2023-10-18', 23321, 'Ofrenda', NULL, 16, '2023-10-12 04:16:35', '2023-10-12 04:16:42'),
-(9, 'pepito suerea', '52535746', 'TI', '2023-10-12', 2000000, 'Diezmo', NULL, 15, '2023-10-12 23:01:56', '2023-10-12 23:02:03'),
-(10, 'MYRIAM ISABEL DIAZ MARTINEZ', '1192903446', 'CC', '2023-10-14', 200000, 'Diezmo', NULL, 15, '2023-10-14 21:13:15', '2023-10-14 21:13:15'),
-(11, 'Pepito Correa', '123435657', 'CC', '2023-10-14', 50000, 'Ofrenda', NULL, 15, '2023-10-14 22:50:20', '2023-10-14 22:55:17'),
-(12, 'Anderson Mendez', '132465', 'CC', '2023-11-22', 134, 'Diezmo', NULL, 19, '2023-11-22 07:19:06', '2023-11-22 07:19:06');
-
 -- --------------------------------------------------------
 
 --
@@ -102,16 +79,6 @@ CREATE TABLE `egresses` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `egresses`
---
-
-INSERT INTO `egresses` (`id`, `description`, `type`, `date`, `value`, `url`, `weekly_reports_id`, `created_at`, `updated_at`) VALUES
-(9, 'pago recibo agua', 'Caja', '2023-10-11', 2345400, NULL, 15, '2023-10-12 01:33:08', '2023-10-12 03:45:54'),
-(10, 'pago de internet ', 'Caja Menor', '2023-10-04', 20000, NULL, 17, '2023-10-12 04:23:28', '2023-10-12 04:24:02'),
-(11, 'emolumentos', 'Caja Mayor', '2023-10-14', 230000, NULL, 15, '2023-10-14 21:24:30', '2023-10-14 21:24:30'),
-(12, 'Pago arriendo', 'Caja Mayor', '2023-11-22', 700000, NULL, 19, '2023-11-22 07:30:03', '2023-11-22 07:30:03');
 
 -- --------------------------------------------------------
 
@@ -146,19 +113,19 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(7, '2014_10_12_000000_create_users_table', 1),
-(8, '2014_10_12_100000_create_password_reset_tokens_table', 1),
-(9, '2019_08_19_000000_create_failed_jobs_table', 1),
-(10, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(11, '2023_09_18_161932_create_resources_table', 1),
-(12, '2023_09_18_220937_create_data_users_table', 1),
-(14, '2023_09_22_193227_create_work_teams_table', 2),
-(15, '2023_09_22_205854_create_team_members_table', 3),
-(16, '2023_10_04_175754_create_permission_tables', 4),
-(29, '2023_10_09_041923_create_monthly_reports_table', 5),
-(30, '2023_10_09_042015_create_weekly_reports_table', 5),
-(31, '2023_10_09_042711_create_deposits_table', 5),
-(32, '2023_10_09_042949_create_egresses_table', 5);
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2023_09_18_161932_create_resources_table', 1),
+(6, '2023_09_18_220937_create_data_users_table', 1),
+(7, '2023_09_22_193227_create_work_teams_table', 1),
+(8, '2023_09_22_205854_create_team_members_table', 1),
+(9, '2023_10_04_175754_create_permission_tables', 1),
+(10, '2023_10_09_041923_create_monthly_reports_table', 1),
+(11, '2023_10_09_042015_create_weekly_reports_table', 1),
+(12, '2023_10_09_042711_create_deposits_table', 1),
+(13, '2023_10_09_042949_create_egresses_table', 1);
 
 -- --------------------------------------------------------
 
@@ -189,19 +156,7 @@ CREATE TABLE `model_has_roles` (
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(2, 'App\\Models\\User', 8),
-(2, 'App\\Models\\User', 206),
-(4, 'App\\Models\\User', 207),
-(5, 'App\\Models\\User', 183),
-(6, 'App\\Models\\User', 183),
-(6, 'App\\Models\\User', 195),
-(6, 'App\\Models\\User', 201),
-(7, 'App\\Models\\User', 183),
-(7, 'App\\Models\\User', 195),
-(7, 'App\\Models\\User', 201),
-(7, 'App\\Models\\User', 202),
-(8, 'App\\Models\\User', 3),
-(8, 'App\\Models\\User', 201);
+(1, 'App\\Models\\User', 1);
 
 -- --------------------------------------------------------
 
@@ -215,16 +170,6 @@ CREATE TABLE `monthly_reports` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `monthly_reports`
---
-
-INSERT INTO `monthly_reports` (`id`, `date`, `created_at`, `updated_at`) VALUES
-(4, '2023-11-30', '2023-10-10 04:39:15', '2023-10-10 04:39:15'),
-(5, '2023-08-31', '2023-10-10 07:10:29', '2023-10-10 07:10:29'),
-(125410, '2023-10-31', '2023-10-10 04:22:05', '2023-10-10 04:22:05'),
-(125412, '2024-01-31', '2023-10-14 22:52:39', '2023-10-14 22:52:39');
 
 -- --------------------------------------------------------
 
@@ -257,31 +202,31 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(11, 'Gestion Usuarios', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(12, 'Crear Usuarios', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(13, 'Editar Usuarios', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(14, 'Eliminar Usuarios', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(15, 'Roles y Permisos', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(16, 'Crear Roles', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(17, 'Eliminar Roles', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(18, 'Editar Roles', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(19, 'Gestion Equipos', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(20, 'Crear Equipos', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(21, 'Editar Equipos', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(22, 'Eliminar Equipos', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(23, 'Gestion Recursos', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(24, 'Crear Recursos', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(25, 'Editar Recursos', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(26, 'Eliminar Recursos', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(27, 'Gestion Eventos', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(28, 'Crear Eventos', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(29, 'Editar Eventos', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(30, 'Eliminar Eventos', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(31, 'Gestion Privilegios', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(32, 'Crear Privilegios', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(33, 'Editar Privilegios', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(34, 'Eliminar Privilegios', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29'),
-(35, 'Gestion Financiera', 'web', '2023-10-06 01:07:29', '2023-10-06 01:07:29');
+(1, 'Gestion Usuarios', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(2, 'Crear Usuarios', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(3, 'Editar Usuarios', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(4, 'Eliminar Usuarios', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(5, 'Roles y Permisos', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(6, 'Crear Roles', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(7, 'Eliminar Roles', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(8, 'Editar Roles', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(9, 'Gestion Equipos', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(10, 'Crear Equipos', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(11, 'Editar Equipos', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(12, 'Eliminar Equipos', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(13, 'Gestion Recursos', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(14, 'Crear Recursos', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(15, 'Editar Recursos', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(16, 'Eliminar Recursos', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(17, 'Gestion Eventos', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(18, 'Crear Eventos', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(19, 'Editar Eventos', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(20, 'Eliminar Eventos', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(21, 'Gestion Privilegios', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(22, 'Crear Privilegios', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(23, 'Editar Privilegios', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(24, 'Eliminar Privilegios', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03'),
+(25, 'Gestion Financiera', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03');
 
 -- --------------------------------------------------------
 
@@ -320,16 +265,6 @@ CREATE TABLE `resources` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Volcado de datos para la tabla `resources`
---
-
-INSERT INTO `resources` (`id`, `nombre`, `tipo`, `descripcion`, `url`, `url_iframe`, `archivo`, `created_at`, `updated_at`) VALUES
-(2, '🔴 La iglesia en guerra | Servicio Dominical', 'Servicio Dominical', 'ninguna', 'https://youtu.be/tneedFZFjC4', 'https://www.youtube.com/embed/tneedFZFjC4?si=AS7Y3Fg5H9gMd_fq', NULL, NULL, '2023-10-04 09:40:08'),
-(4, '🔴 El servicio y la unción | Servicio Dominical - Santa Cena🔴', 'Servicio Dominical', 'no tiene', 'https://youtu.be/NNPR_cJRDck', 'https://www.youtube.com/embed/NNPR_cJRDck?si=lp-BVcJMIMU4XL9c', NULL, '2023-10-04 08:36:26', '2023-10-04 09:39:59'),
-(9, '🔴ASÍ ESTAN ATACANDO A LA FAMILIA | Servicio Domical', 'Servicio Dominical', NULL, 'https://youtu.be/7TkAQMV6tZ0', 'https://www.youtube.com/embed/7TkAQMV6tZ0?si=15RjvqLpaT0FCqEk', NULL, '2023-10-12 09:56:29', '2023-10-12 09:56:29'),
-(10, 'Video demostrativo', 'URL', NULL, 'https://youtu.be/NNPR_cJRDck', NULL, NULL, '2023-10-14 22:48:27', '2023-10-14 22:48:27');
-
 -- --------------------------------------------------------
 
 --
@@ -349,13 +284,7 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(2, 'Pastor', 'web', '2023-10-05 08:18:59', '2023-10-05 11:22:40'),
-(3, 'Lider de Alabanza', 'web', '2023-10-05 08:59:22', '2023-10-05 08:59:22'),
-(4, 'Administrador', 'web', '2023-10-05 11:02:02', '2023-10-05 11:02:02'),
-(5, 'Lider  Evangelismo', 'web', '2023-10-05 11:22:52', '2023-10-05 22:26:36'),
-(6, 'Miembro', 'web', '2023-10-05 23:44:53', '2023-10-05 23:44:53'),
-(7, 'Asistente', 'web', '2023-10-05 23:45:06', '2023-10-05 23:45:06'),
-(8, 'Asistente Administrativo', 'web', '2023-10-14 21:09:43', '2023-10-14 21:09:43');
+(1, 'Administrador', 'web', '2023-11-28 02:02:03', '2023-11-28 02:02:03');
 
 -- --------------------------------------------------------
 
@@ -373,44 +302,31 @@ CREATE TABLE `role_has_permissions` (
 --
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
-(11, 2),
-(11, 4),
-(11, 5),
-(12, 2),
-(12, 4),
-(13, 2),
-(13, 4),
-(14, 2),
-(14, 4),
-(15, 4),
-(16, 4),
-(17, 4),
-(18, 4),
-(19, 4),
-(19, 5),
-(19, 6),
-(19, 8),
-(20, 4),
-(20, 8),
-(21, 4),
-(21, 8),
-(22, 4),
-(22, 8),
-(23, 4),
-(23, 6),
-(24, 4),
-(25, 4),
-(26, 4),
-(27, 4),
-(28, 4),
-(29, 4),
-(30, 4),
-(31, 4),
-(32, 4),
-(33, 4),
-(34, 4),
-(35, 4),
-(35, 8);
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(13, 1),
+(14, 1),
+(15, 1),
+(16, 1),
+(17, 1),
+(18, 1),
+(19, 1),
+(20, 1),
+(21, 1),
+(22, 1),
+(23, 1),
+(24, 1),
+(25, 1);
 
 -- --------------------------------------------------------
 
@@ -451,28 +367,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `email_verified_at`, `password`, `google_id`, `image`, `remember_token`, `created_at`, `updated_at`) VALUES
-(9, 'Pepito', 'Suares', 'pedro@pedro.com', NULL, '$2y$10$mg4FcIej9Kque8zwogEd/e3cY/R0tb751JPMFMkdx2w6ZTFQVOKeG', NULL, NULL, NULL, '2023-09-23 03:57:11', '2023-09-23 03:57:11'),
-(11, 'Jhoan', 'Sanches Gallardo', 'Johan@sanchesgallardo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(155, NULL, NULL, 'dsfsdfsd2@dfsdfdsf', NULL, NULL, NULL, NULL, NULL, '2023-09-28 01:39:07', '2023-09-28 01:39:07'),
-(156, NULL, NULL, 'jajaajjaja@jajajjajaja', NULL, NULL, NULL, NULL, NULL, '2023-09-28 01:51:39', '2023-09-28 01:51:39'),
-(157, NULL, NULL, 'jojo@jojo', NULL, NULL, NULL, NULL, NULL, '2023-09-28 01:52:14', '2023-09-28 01:52:14'),
-(158, NULL, NULL, 'pepe@pepe', NULL, NULL, NULL, NULL, NULL, '2023-09-28 01:52:50', '2023-09-28 01:52:50'),
-(159, NULL, NULL, 'nono@nono', NULL, NULL, NULL, NULL, NULL, '2023-09-28 01:54:13', '2023-09-28 01:54:13'),
-(160, NULL, NULL, 'bebe@bebe', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:12:20', '2023-09-28 03:12:20'),
-(161, NULL, NULL, 'nini@ni', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:13:15', '2023-09-28 03:13:15'),
-(162, NULL, NULL, 'babyasad@sda', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:14:31', '2023-09-28 03:14:31'),
-(163, NULL, NULL, 'hupppa@no', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:21:40', '2023-09-28 03:21:40'),
-(164, NULL, NULL, 'sasdsaqwert@qwertyu', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:22:22', '2023-09-28 03:22:22'),
-(165, NULL, NULL, 'qwertyui@aonas', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:24:10', '2023-09-28 03:24:10'),
-(166, NULL, NULL, 'sera@que.ya', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:26:14', '2023-09-28 03:26:14'),
-(167, NULL, NULL, 'nada@de.nada', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:26:41', '2023-09-28 03:26:41'),
-(169, NULL, NULL, 'hupppa@noo', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:31:17', '2023-09-28 03:31:17'),
-(170, NULL, NULL, 'jejejejej@jojojo.com', NULL, NULL, NULL, NULL, NULL, '2023-09-28 03:51:51', '2023-09-28 03:51:51'),
-(171, 'jojojorje', 'jjijijimenes', 'feliz@navidad', NULL, NULL, NULL, NULL, NULL, '2023-09-29 04:11:59', '2023-10-03 06:03:32'),
-(180, 'Dayana', 'Ortega', 'Dayana@gayana.com', NULL, NULL, NULL, NULL, NULL, '2023-10-03 00:47:30', '2023-10-03 07:24:27'),
-(201, 'Pepito Enriques', 'Gonzalez', 'pedro@gonzales.com', NULL, NULL, NULL, NULL, NULL, '2023-10-14 22:43:34', '2023-10-14 22:44:24'),
-(205, 'jhon jairo', 'Hernandez', 'Jon@Hernandez', NULL, '$2y$10$qqhsG.7Q64pIl8x8yGwAde9ExAiOw5umy4eWe0yXROwH.kkuaIk8S', NULL, NULL, NULL, '2023-11-24 21:00:53', '2023-11-24 21:00:53'),
-(207, 'admin', 'admin', 'admin@admin', NULL, '$2y$10$ziVb/bOmlveb7DqNWnTpIO2iKYXHuTEK7Aaejmu9Yv..5k6vsyM7O', NULL, NULL, NULL, '2023-11-25 03:39:10', '2023-11-25 03:43:13');
+(1, 'admin', NULL, 'admin@ivead.org', NULL, '$2y$10$QB6dKpD1BnrSWpqqW7cpKeQBn1qD8NH0iS4V/DhlI5ZQYwmjzygoO', NULL, NULL, NULL, '2023-11-28 02:02:03', '2023-11-28 02:02:03');
 
 -- --------------------------------------------------------
 
@@ -487,17 +382,6 @@ CREATE TABLE `weekly_reports` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `weekly_reports`
---
-
-INSERT INTO `weekly_reports` (`id`, `date`, `monthly_reports_id`, `created_at`, `updated_at`) VALUES
-(15, '2023-10-15', 125410, '2023-10-10 04:22:05', '2023-10-10 04:22:05'),
-(16, '2023-10-22', 125410, '2023-10-12 04:16:42', '2023-10-12 04:16:42'),
-(17, '2023-10-08', 125410, '2023-10-12 04:24:02', '2023-10-12 04:24:02'),
-(18, '2024-01-14', 125412, '2023-10-14 22:52:39', '2023-10-14 22:52:39'),
-(19, '2023-11-26', 4, '2023-11-22 07:19:06', '2023-11-22 07:19:06');
 
 -- --------------------------------------------------------
 
@@ -522,8 +406,8 @@ CREATE TABLE `work_teams` (
 --
 ALTER TABLE `data_users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `data_users_user_id_unique` (`user_id`),
-  ADD UNIQUE KEY `data_users_dni_user_unique` (`dni_user`);
+  ADD UNIQUE KEY `data_users_dni_user_unique` (`dni_user`),
+  ADD UNIQUE KEY `data_users_user_id_unique` (`user_id`);
 
 --
 -- Indices de la tabla `deposits`
@@ -650,19 +534,19 @@ ALTER TABLE `work_teams`
 -- AUTO_INCREMENT de la tabla `data_users`
 --
 ALTER TABLE `data_users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `deposits`
 --
 ALTER TABLE `deposits`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `egresses`
 --
 ALTER TABLE `egresses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -674,19 +558,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `monthly_reports`
 --
 ALTER TABLE `monthly_reports`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125413;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -698,37 +582,37 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `resources`
 --
 ALTER TABLE `resources`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `team_members`
 --
 ALTER TABLE `team_members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `weekly_reports`
 --
 ALTER TABLE `weekly_reports`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `work_teams`
 --
 ALTER TABLE `work_teams`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
