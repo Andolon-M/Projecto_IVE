@@ -45,7 +45,7 @@ class ReporteMensual extends Component
         //obtener el mes actual
         $mesActual = Carbon::now()->endOfMonth()->startOfDay();
         $reporteMes= MonthlyReport::where('date', $mesActual)->first();
-        $this->showReporteMensual($reporteMes->id);
+        $this->showReporteMensual($reporteMes->id ?? null);
     }
 
 

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,12 +13,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(RolesSeeder::class);
+
         //\App\Models\User::factory(10)->create();
 
-        /*\App\Models\User::factory()->create([
+        \App\Models\User::factory()->create([
             'name' => 'admin',
-            'email' => 'admin@example.com',
-         ]);*/
+            'email' => 'admin@ivead.org',
+            'password' => 'admin123'
+        ]);
+
+        $this->call(RolesSeeder::class);
     }
 }

@@ -25,7 +25,7 @@
 
 
             </ul>
-            <p class="text-xl mb-3 text-green-900 font-semibold">Serial: {{$reporteid}}</p>
+            <p class="text-xl mb-3 text-green-900 font-semibold">Serial: {{$reporteid ?? "No disponible"}}</p>
             <p class="text-lg  text-green-900 font-semibold">Ofrendas: ${{ number_format($totalOfrendas?? 0, 0, ',', '.') }}</p>
             <p class="text-lg text-green-900 font-semibold">Diezmos: ${{ number_format($totalDiezmos?? 0, 0, ',', '.') }}</p>
             <p class="text-lg text-green-900 font-semibold">Egresos Caja: ${{ number_format($totalCaja?? 0, 0, ',', '.') }}</p>

@@ -44,7 +44,7 @@ class ReporteSemanal extends Component
         //obtener el mes actual
         $semanaActual = Carbon::now()->endOfWeek()->startOfDay();
         $reporteSemana = WeeklyReport::where('date', $semanaActual)->first();
-        $this->showReporteSemana($reporteSemana->id);
+        $this->showReporteSemana($reporteSemana->id ?? null);
     }
 
 
