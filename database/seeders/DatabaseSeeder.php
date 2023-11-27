@@ -16,11 +16,14 @@ class DatabaseSeeder extends Seeder
 
         //\App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'admin',
-            'email' => 'admin@ivead.org',
-            'password' => 'admin123'
-        ]);
+        \App\Models\User::updateOrCreate(
+            ['name' => 'admin'],
+            [
+                'name' => 'admin',
+                'email' => 'admin@ivead.org',
+                'password' => bcrypt('admin123')
+            ]
+        );
 
         $this->call(RolesSeeder::class);
     }
