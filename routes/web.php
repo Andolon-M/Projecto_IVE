@@ -25,6 +25,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('/donaciones', \App\Http\Controllers\DonacionesController::class);
+
 //redireccionamiento al inicio de session de google
 Route::get('/google-auth/redirect', function () {
     return Socialite::driver('google')->redirect();

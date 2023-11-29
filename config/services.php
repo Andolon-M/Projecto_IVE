@@ -37,4 +37,9 @@ return [
         'redirect' => 'https://ivead.org/google-auth/callback',
     ],
 
+    'mercadopago'=>[
+        'key'=> env('MP_PUBLIC_KEY'),
+        'token'=> env('MP_ACCESS_TOKEN'),
+    ],
+
 ];
